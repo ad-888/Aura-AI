@@ -164,7 +164,8 @@ async function send(){
   addMsg('user',text);hist.push({role:'user',content:text});
   st(true);
   try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{
+    const r = await fetch('https://corsproxy.io/?https://api.anthropic.com/v1/messages', {
+
       method:'POST',
       headers:{'Content-Type':'application/json','x-api-key':K,'anthropic-version':'2023-06-01'},
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:M[mode].s,messages:hist})
