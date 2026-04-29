@@ -214,14 +214,19 @@ async function send(){
   st(true);
   try{
     const body=JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1024,system:M[mode].s,messages:hist});
-    const hdrs={'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01'};
+    const hdrs={'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'};
     let r,data;
     try{
-      r=await fetch('https://corsproxy.io/?https://api.anthropic.com/v1/messages',{method:'POST',headers:hdrs,body});
+      r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:hdrs,body});
       data=await r.json();
     }catch(e1){
-      r=await fetch('https://api.allorigins.win/raw?url=https://api.anthropic.com/v1/messages',{method:'POST',headers:hdrs,body});
-      data=await r.json();
+      try{
+        r=await fetch('https://corsproxy.io/?https://api.anthropic.com/v1/messages',{method:'POST',headers:hdrs,body});
+        data=await r.json();
+      }catch(e2){
+        r=await fetch('https://api.allorigins.win/raw?url=https://api.anthropic.com/v1/messages',{method:'POST',headers:hdrs,body});
+        data=await r.json();
+      }
     }
     if(data.error){
       const msg=data.error.message||'';
