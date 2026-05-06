@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://api.anthropic.com; img-src 'self' data:; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Aura-AI</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0a0a0f">
@@ -164,7 +166,7 @@ textarea:focus{outline:none;border-color:rgba(201,169,110,0.4)}
 <div id="sk-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:1000;align-items:center;justify-content:center">
   <div style="background:#111118;border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:24px;width:min(90vw,380px);display:flex;flex-direction:column;gap:16px">
     <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;color:#c9a96e">Paramètres — Clé API Anthropic</div>
-    <div style="font-size:0.6rem;color:rgba(232,228,220,0.5);line-height:1.7">Votre clé est stockée uniquement dans ce navigateur (localStorage) et n'est jamais envoyée ailleurs.<br><a href="https://platform.claude.com" target="_blank" rel="noopener" style="color:#c9a96e;text-decoration:none">Obtenir une clé API →</a></div>
+    <div style="font-size:0.6rem;color:rgba(232,228,220,0.5);line-height:1.7">Votre clé est stockée uniquement dans ce navigateur (localStorage) et n'est jamais envoyée ailleurs.<br><a href="https://platform.claude.com" target="_blank" rel="noopener noreferrer" style="color:#c9a96e;text-decoration:none">Obtenir une clé API →</a></div>
     <div style="display:flex;gap:6px;align-items:center">
       <input id="sk-inp" type="password" placeholder="sk-ant-api03-…" style="flex:1;background:#0a0a0f;border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#e8e4dc;font-family:'DM Mono',monospace;font-size:0.7rem;padding:9px 11px;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(201,169,110,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
       <button onclick="toggleKeyVis()" title="Afficher/masquer" style="background:#16161f;border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:rgba(232,228,220,0.5);cursor:pointer;padding:9px 10px;font-size:0.75rem;line-height:1;flex-shrink:0">👁</button>
@@ -216,6 +218,7 @@ function rs(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,
 function hk(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}}
 function gt(){return new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}
 
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function addMsg(role,text){
   const w=document.getElementById('welcome');if(w)w.remove();
   const c=document.getElementById('msgs');
@@ -223,7 +226,7 @@ function addMsg(role,text){
   const av=document.createElement('div');av.className='av';av.textContent=role==='user'?'🧑':'A';
   const bw=document.createElement('div');
   const b=document.createElement('div');b.className='bub';
-  b.innerHTML=text.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
+  b.innerHTML=esc(text).replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
   const t=document.createElement('div');t.className='mtime';t.style.textAlign=role==='user'?'right':'left';t.textContent=gt();
   bw.appendChild(b);bw.appendChild(t);d.appendChild(av);d.appendChild(bw);c.appendChild(d);
   c.scrollTop=c.scrollHeight;
@@ -246,18 +249,8 @@ async function send(){
     const body=JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1024,system:M[mode].s,messages:hist});
     const hdrs={'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'};
     let r,data;
-    try{
-      r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:hdrs,body});
-      data=await r.json();
-    }catch(e1){
-      try{
-        r=await fetch('https://corsproxy.io/?https://api.anthropic.com/v1/messages',{method:'POST',headers:hdrs,body});
-        data=await r.json();
-      }catch(e2){
-        r=await fetch('https://api.allorigins.win/raw?url=https://api.anthropic.com/v1/messages',{method:'POST',headers:hdrs,body});
-        data=await r.json();
-      }
-    }
+    r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:hdrs,body});
+    data=await r.json();
     if(data.error){
       const msg=data.error.message||'';
       if(data.error.type==='authentication_error'||msg.toLowerCase().includes('api key')||msg.toLowerCase().includes('api_key'))
