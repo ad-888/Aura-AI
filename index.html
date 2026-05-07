@@ -16,40 +16,48 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{height:100%}
 body{background:#0a0a0f;color:#e8e4dc;font-family:'DM Mono',monospace;display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
-header{padding:12px 20px;background:#0a0a0f;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;letter-spacing:0.08em}
+
+/* Header */
+header{padding:10px 16px;background:#0a0a0f;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:8px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;letter-spacing:0.08em;white-space:nowrap}
 .logo span{color:#c9a96e;font-style:italic}
-.logo-tag{font-size:0.5rem;color:rgba(232,228,220,0.4);letter-spacing:0.2em;text-transform:uppercase;margin-left:8px}
-.status{display:flex;align-items:center;gap:6px;font-size:0.6rem;color:rgba(232,228,220,0.4)}
-.dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse 2s infinite}
+.logo-tag{font-size:0.45rem;color:rgba(232,228,220,0.35);letter-spacing:0.2em;text-transform:uppercase;margin-left:6px}
+.ver{font-size:0.45rem;color:rgba(201,169,110,0.5);letter-spacing:0.15em;margin-left:4px;border:1px solid rgba(201,169,110,0.25);border-radius:4px;padding:1px 4px}
+.hright{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.status{display:flex;align-items:center;gap:6px;font-size:0.58rem;color:rgba(232,228,220,0.4)}
+.dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse 2s infinite;flex-shrink:0}
+.tok{font-size:0.5rem;color:rgba(201,169,110,0.5);letter-spacing:0.05em}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 
-/* Barre de modes mobile */
-.mobar{display:none;overflow-x:auto;padding:8px 12px;gap:6px;border-bottom:1px solid rgba(255,255,255,0.07);background:#0a0a0f;flex-shrink:0;-webkit-overflow-scrolling:touch}
+/* Barre modes mobile */
+.mobar{display:none;overflow-x:auto;padding:7px 12px;gap:6px;border-bottom:1px solid rgba(255,255,255,0.07);background:#0a0a0f;flex-shrink:0;-webkit-overflow-scrolling:touch}
 .mobar::-webkit-scrollbar{display:none}
-.mobtn{display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:20px;border:1px solid rgba(255,255,255,0.1);background:#16161f;color:rgba(232,228,220,0.5);font-family:'DM Mono',monospace;font-size:0.6rem;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all 0.2s}
+.mobtn{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:20px;border:1px solid rgba(255,255,255,0.1);background:#16161f;color:rgba(232,228,220,0.5);font-family:'DM Mono',monospace;font-size:0.58rem;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all 0.2s}
 .mobtn.active{background:rgba(201,169,110,0.15);border-color:rgba(201,169,110,0.4);color:#c9a96e}
 
+/* Layout */
 .layout{display:flex;flex:1;overflow:hidden;min-height:0}
 .sidebar{width:200px;background:#111118;border-right:1px solid rgba(255,255,255,0.07);padding:14px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;flex-shrink:0}
-.slabel{font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(232,228,220,0.4);margin-bottom:2px}
+.slabel{font-size:0.48rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(232,228,220,0.4);margin-bottom:3px}
 .mgrid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
 .mbtn{background:#16161f;border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:8px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;transition:all 0.2s;color:#e8e4dc}
 .mbtn.active{background:rgba(201,169,110,0.15);border-color:rgba(201,169,110,0.4)}
 .mbtn .mi{font-size:1rem}
-.mbtn .ml{font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(232,228,220,0.4)}
+.mbtn .ml{font-size:0.48rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(232,228,220,0.4)}
 .mbtn.active .ml{color:#c9a96e}
-.qbtn{display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:6px;cursor:pointer;font-size:0.65rem;color:rgba(232,228,220,0.5);border:none;background:none;width:100%;text-align:left;transition:all 0.2s}
+.qbtn{display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:6px;cursor:pointer;font-size:0.63rem;color:rgba(232,228,220,0.5);border:none;background:none;width:100%;text-align:left;transition:all 0.2s}
 .qbtn:hover{background:rgba(201,169,110,0.08);color:#e8e4dc}
+
+/* Chat */
 .chat{flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0}
-.msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:14px;min-height:0}
+.msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:14px;min-height:0}
 .msgs::-webkit-scrollbar{width:3px}
 .msgs::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:3px}
 .welcome{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:20px}
 .orb{width:60px;height:60px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(201,169,110,0.5),rgba(201,169,110,0.05));border:1px solid rgba(201,169,110,0.3);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-style:italic;color:#c9a96e;animation:float 3s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 .welcome h2{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300}
-.welcome p{font-size:0.65rem;color:rgba(232,228,220,0.5);line-height:1.8;max-width:260px}
+.welcome p{font-size:0.63rem;color:rgba(232,228,220,0.5);line-height:1.8;max-width:260px}
 .msg{display:flex;gap:10px}
 .msg.user{flex-direction:row-reverse}
 .av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.75rem;border:1px solid rgba(255,255,255,0.1)}
@@ -58,51 +66,83 @@ header{padding:12px 20px;background:#0a0a0f;border-bottom:1px solid rgba(255,255
 .bub{max-width:75%;padding:10px 14px;border-radius:12px;font-size:0.75rem;line-height:1.7}
 .msg.ai .bub{background:#16161f;border:1px solid rgba(255,255,255,0.07);border-bottom-left-radius:3px}
 .msg.user .bub{background:rgba(201,169,110,0.15);border:1px solid rgba(201,169,110,0.2);border-bottom-right-radius:3px}
-.mtime{font-size:0.5rem;color:rgba(232,228,220,0.3);margin-top:3px}
-.twrap{padding:0 16px 6px;display:none}
+.mtime{font-size:0.48rem;color:rgba(232,228,220,0.3);margin-top:3px}
+.twrap{padding:0 14px 6px;display:none}
 .twrap.show{display:flex;gap:10px;align-items:flex-end}
 .typing{display:flex;gap:4px;padding:10px 14px;background:#16161f;border:1px solid rgba(255,255,255,0.07);border-radius:12px;border-bottom-left-radius:3px}
 .td{width:4px;height:4px;border-radius:50%;background:#c9a96e;animation:bounce 1.2s infinite}
 .td:nth-child(2){animation-delay:0.2s}
 .td:nth-child(3){animation-delay:0.4s}
 @keyframes bounce{0%,100%{transform:translateY(0);opacity:0.4}50%{transform:translateY(-4px);opacity:1}}
-.iarea{padding:10px 14px;border-top:1px solid rgba(255,255,255,0.07);background:#111118;flex-shrink:0}
+
+/* Zone saisie */
+.iarea{padding:8px 12px 10px;border-top:1px solid rgba(255,255,255,0.07);background:#111118;flex-shrink:0}
+/* Actions strip */
+.astrip{display:flex;gap:5px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+.astrip::-webkit-scrollbar{display:none}
+.abtn{display:inline-flex;align-items:center;gap:5px;padding:6px 11px;border-radius:20px;background:#16161f;border:1px solid rgba(255,255,255,0.09);color:rgba(232,228,220,0.55);font-family:'DM Mono',monospace;font-size:0.58rem;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all 0.2s}
+.abtn:hover{border-color:rgba(201,169,110,0.4);color:#c9a96e;background:rgba(201,169,110,0.08)}
+.abtn.ab-special{border-color:rgba(201,169,110,0.35);color:#c9a96e;background:rgba(201,169,110,0.07)}
+.abtn.ab-special:hover{background:rgba(201,169,110,0.18)}
 .irow{display:flex;gap:8px;align-items:flex-end}
 textarea{flex:1;background:#0a0a0f;border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#e8e4dc;font-family:'DM Mono',monospace;font-size:0.74rem;padding:10px 12px;resize:none;min-height:40px;max-height:120px;line-height:1.5}
 textarea::placeholder{color:rgba(232,228,220,0.3)}
 textarea:focus{outline:none;border-color:rgba(201,169,110,0.4)}
 .sbtn{width:40px;height:40px;border-radius:10px;background:rgba(201,169,110,0.15);border:1px solid rgba(201,169,110,0.3);color:#c9a96e;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s}
 .sbtn:hover{background:rgba(201,169,110,0.25)}
-.chips{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap}
-.chip{padding:3px 9px;border-radius:14px;background:#16161f;border:1px solid rgba(255,255,255,0.07);font-size:0.55rem;color:rgba(232,228,220,0.5);cursor:pointer;transition:all 0.2s}
-.chip:hover{border-color:rgba(201,169,110,0.3);color:#c9a96e}
+
+/* Modale générique */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.78);z-index:1000;align-items:center;justify-content:center;padding:16px}
+.modal-box{background:#111118;border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:22px;width:min(96vw,440px);display:flex;flex-direction:column;gap:14px;max-height:90vh;overflow-y:auto}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;color:#c9a96e}
+.modal-sub{font-size:0.58rem;color:rgba(232,228,220,0.45);line-height:1.7}
+.mfield{background:#0a0a0f;border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#e8e4dc;font-family:'DM Mono',monospace;font-size:0.68rem;padding:9px 11px;outline:none;transition:border-color 0.2s;width:100%}
+.mfield:focus{border-color:rgba(201,169,110,0.4)}
+.mfooter{display:flex;gap:8px;justify-content:flex-end;margin-top:4px}
+.btn-cancel{padding:8px 16px;border-radius:8px;background:none;border:1px solid rgba(255,255,255,0.1);color:rgba(232,228,220,0.5);font-family:'DM Mono',monospace;font-size:0.63rem;cursor:pointer}
+.btn-ok{padding:8px 16px;border-radius:8px;background:rgba(201,169,110,0.15);border:1px solid rgba(201,169,110,0.3);color:#c9a96e;font-family:'DM Mono',monospace;font-size:0.63rem;cursor:pointer}
+.merr{font-size:0.58rem;color:#f87171;min-height:1em}
+
+/* Drop zone fichier */
+.dropzone{border:1px dashed rgba(201,169,110,0.35);border-radius:10px;padding:16px;text-align:center;cursor:pointer;transition:all 0.2s;background:rgba(201,169,110,0.03)}
+.dropzone:hover,.dropzone.drag{border-color:#c9a96e;background:rgba(201,169,110,0.08)}
+.dropzone input{display:none}
+.dropzone p{font-size:0.6rem;color:rgba(232,228,220,0.4);margin-top:6px}
+.mb-preview{background:#0a0a0f;border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:8px 10px;font-size:0.55rem;color:rgba(232,228,220,0.5);max-height:100px;overflow-y:auto;white-space:pre-wrap;display:none;font-family:'DM Mono',monospace}
+.mb-fname{font-size:0.58rem;color:#c9a96e;margin-top:2px}
 
 @media(max-width:600px){
   .sidebar{display:none}
   .mobar{display:flex}
-  header{padding:10px 14px}
-  .logo{font-size:1.15rem}
-  .logo-tag{display:none}
-  .bub{max-width:88%;font-size:0.78rem}
-  .msgs{padding:12px}
-  .iarea{padding:8px 12px}
-  .welcome h2{font-size:1.2rem}
+  header{padding:8px 12px}
+  .logo{font-size:1.1rem}
+  .logo-tag,.ver{display:none}
+  .bub{max-width:88%;font-size:0.77rem}
+  .msgs{padding:10px}
+  .iarea{padding:6px 10px 8px}
+  .welcome h2{font-size:1.15rem}
+  .tok{display:none}
 }
 </style>
 </head>
 <body>
 <header>
-  <div style="display:flex;align-items:baseline">
+  <div style="display:flex;align-items:baseline;min-width:0">
     <div class="logo"><span>Aura</span>-AI</div>
     <div class="logo-tag">Assistant Personnel</div>
+    <div class="ver">v1.3</div>
   </div>
-  <div style="display:flex;align-items:center;gap:12px">
-    <div class="status"><div class="dot"></div>En ligne · Adrien</div>
-    <button onclick="openSettings()" title="Paramètres API" style="background:none;border:none;color:rgba(232,228,220,0.4);cursor:pointer;font-size:1rem;padding:4px;line-height:1;transition:color 0.2s" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='rgba(232,228,220,0.4)'">⚙</button>
+  <div class="hright">
+    <div class="status">
+      <div class="dot"></div>
+      <span>Adrien</span>
+    </div>
+    <span class="tok" id="tok-display">0 tokens</span>
+    <button onclick="openSettings()" title="Paramètres" style="background:none;border:none;color:rgba(232,228,220,0.4);cursor:pointer;font-size:1rem;padding:4px;line-height:1;transition:color 0.2s" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='rgba(232,228,220,0.4)'">⚙</button>
   </div>
 </header>
 
-<!-- Barre de modes mobile (visible uniquement sur téléphone) -->
+<!-- Barre modes mobile -->
 <div class="mobar">
   <button class="mobtn active" data-mode="general" onclick="setMode('general')">✦ Général</button>
   <button class="mobtn" data-mode="pro" onclick="setMode('pro')">💼 Pro</button>
@@ -132,8 +172,10 @@ textarea:focus{outline:none;border-color:rgba(201,169,110,0.4)}
     <div>
       <div class="slabel">Contexte personnel</div>
       <button class="qbtn" onclick="ins('En tant que formateur à l\'École Black Jack, aide-moi à ')">🎓 École Black Jack</button>
+      <button class="qbtn" onclick="openMB()">📊 Média Buyer</button>
     </div>
   </aside>
+
   <div class="chat">
     <div class="msgs" id="msgs">
       <div class="welcome" id="welcome">
@@ -148,49 +190,94 @@ textarea:focus{outline:none;border-color:rgba(201,169,110,0.4)}
       <div class="typing"><div class="td"></div><div class="td"></div><div class="td"></div></div>
     </div>
     <div class="iarea">
+      <!-- Actions strip -->
+      <div class="astrip">
+        <button class="abtn" onclick="ins('Résume en 5 points clés : ')">📋 Résumer</button>
+        <button class="abtn" onclick="ins('Traduis en anglais : ')">🌐 Traduire</button>
+        <button class="abtn" onclick="ins('Améliore et reformule ce texte : ')">✨ Améliorer</button>
+        <button class="abtn" onclick="ins('Crée un plan détaillé pour ')">📅 Planifier</button>
+        <button class="abtn" onclick="ins('Rédige un email professionnel pour ')">✉️ Email</button>
+        <button class="abtn" onclick="ins('Génère des idées créatives pour ')">💡 Idées</button>
+        <button class="abtn ab-special" onclick="openMB()">📊 Média Buyer</button>
+      </div>
       <div class="irow">
         <textarea id="inp" placeholder="Posez votre question à Aura…" rows="1" onkeydown="hk(event)" oninput="rs(this)"></textarea>
         <button class="sbtn" onclick="send()">↑</button>
-      </div>
-      <div class="chips">
-        <div class="chip" onclick="ins('Résume en 5 points ')">Résumer</div>
-        <div class="chip" onclick="ins('Traduis en anglais : ')">Traduire</div>
-        <div class="chip" onclick="ins('Améliore ce texte : ')">Améliorer</div>
-        <div class="chip" onclick="ins('Crée un plan pour ')">Planifier</div>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Modale Paramètres -->
-<div id="sk-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:1000;align-items:center;justify-content:center">
-  <div style="background:#111118;border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:24px;width:min(90vw,380px);display:flex;flex-direction:column;gap:16px">
-    <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;color:#c9a96e">Paramètres — Clé API Anthropic</div>
-    <div style="font-size:0.6rem;color:rgba(232,228,220,0.5);line-height:1.7">Votre clé est stockée uniquement dans ce navigateur (localStorage) et n'est jamais envoyée ailleurs.<br><a href="https://platform.claude.com" target="_blank" rel="noopener noreferrer" style="color:#c9a96e;text-decoration:none">Obtenir une clé API →</a></div>
-    <div style="display:flex;gap:6px;align-items:center">
-      <input id="sk-inp" type="password" placeholder="sk-ant-api03-…" style="flex:1;background:#0a0a0f;border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#e8e4dc;font-family:'DM Mono',monospace;font-size:0.7rem;padding:9px 11px;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(201,169,110,0.4)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
-      <button onclick="toggleKeyVis()" title="Afficher/masquer" style="background:#16161f;border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:rgba(232,228,220,0.5);cursor:pointer;padding:9px 10px;font-size:0.75rem;line-height:1;flex-shrink:0">👁</button>
+<div class="modal-overlay" id="sk-modal">
+  <div class="modal-box">
+    <div class="modal-title">⚙ Paramètres — Clé API</div>
+    <div class="modal-sub">
+      Votre clé est stockée uniquement dans ce navigateur (localStorage).<br>
+      <a href="https://platform.claude.com" target="_blank" rel="noopener noreferrer" style="color:#c9a96e;text-decoration:none">Obtenir / gérer votre clé API →</a>
     </div>
-    <div id="sk-err" style="font-size:0.6rem;color:#f87171;min-height:1em"></div>
-    <div style="display:flex;gap:8px;justify-content:flex-end">
-      <button onclick="closeSettings()" style="padding:8px 16px;border-radius:8px;background:none;border:1px solid rgba(255,255,255,0.1);color:rgba(232,228,220,0.5);font-family:'DM Mono',monospace;font-size:0.65rem;cursor:pointer">Annuler</button>
-      <button onclick="saveSettings()" style="padding:8px 16px;border-radius:8px;background:rgba(201,169,110,0.15);border:1px solid rgba(201,169,110,0.3);color:#c9a96e;font-family:'DM Mono',monospace;font-size:0.65rem;cursor:pointer">Enregistrer</button>
+    <div style="display:flex;gap:6px;align-items:center">
+      <input id="sk-inp" type="password" placeholder="sk-ant-api03-…" class="mfield" style="flex:1">
+      <button onclick="toggleKeyVis()" style="background:#16161f;border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:rgba(232,228,220,0.5);cursor:pointer;padding:9px 10px;font-size:0.75rem;line-height:1;flex-shrink:0">👁</button>
+    </div>
+    <div class="merr" id="sk-err"></div>
+    <div style="font-size:0.56rem;color:rgba(232,228,220,0.3);padding:6px 10px;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid rgba(255,255,255,0.06)">
+      💡 Pour consulter vos crédits restants → <a href="https://platform.claude.com" target="_blank" rel="noopener noreferrer" style="color:#c9a96e;text-decoration:none">platform.claude.com</a> → Billing
+    </div>
+    <div class="mfooter">
+      <button class="btn-cancel" onclick="closeSettings()">Annuler</button>
+      <button class="btn-ok" onclick="saveSettings()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modale Média Buyer -->
+<div class="modal-overlay" id="mb-modal">
+  <div class="modal-box">
+    <div class="modal-title">📊 Analyse Média Buyer</div>
+    <div class="modal-sub">Importez vos données publicitaires (CSV, TXT) ou collez-les directement. Aura les analysera et vous donnera des insights actionnables.</div>
+
+    <!-- Drop zone -->
+    <div class="dropzone" id="mb-drop" onclick="document.getElementById('mb-file').click()" ondragover="mbDragOver(event)" ondragleave="mbDragLeave(event)" ondrop="mbDrop(event)">
+      <div style="font-size:1.8rem">📂</div>
+      <p>Glisser un fichier ici ou cliquer pour importer</p>
+      <p style="margin-top:3px;font-size:0.52rem;color:rgba(232,228,220,0.3)">CSV · TXT · TSV acceptés</p>
+      <input type="file" id="mb-file" accept=".csv,.txt,.tsv" onchange="mbFileLoad(event)">
+    </div>
+    <div class="mb-fname" id="mb-fname"></div>
+    <div class="mb-preview" id="mb-preview"></div>
+
+    <!-- Coller des données manuellement -->
+    <div style="font-size:0.56rem;color:rgba(232,228,220,0.35);text-align:center">— ou coller les données ci-dessous —</div>
+    <textarea id="mb-data" class="mfield" rows="4" placeholder="Coller vos données ici (tableau, chiffres, campagnes…)" style="resize:vertical"></textarea>
+
+    <!-- Question -->
+    <textarea id="mb-q" class="mfield" rows="2" placeholder="Votre question (ex: Quel est mon meilleur canal ? Quelles campagnes optimiser ?)" style="resize:vertical"></textarea>
+
+    <div class="merr" id="mb-err"></div>
+    <div class="mfooter">
+      <button class="btn-cancel" onclick="closeMB()">Annuler</button>
+      <button class="btn-ok" onclick="sendMB()">Analyser avec Aura →</button>
     </div>
   </div>
 </div>
 
 <script>
+const VERSION='1.3';
 const M={
   general:{s:'Tu es Aura, assistant personnel élégant pour Adrien. Réponds en français, avec clarté et bienveillance. Adrien est formateur à l\'École Black Jack. Sois concis et chaleureux.'},
   pro:{s:'Tu es Aura en mode professionnel pour Adrien, formateur à l\'École Black Jack. Aide-le dans ses tâches professionnelles. Sois précis et structuré. Réponds en français.'},
   creative:{s:'Tu es Aura en mode créatif pour Adrien. Aide-le avec ses projets créatifs et rédactionnels. Sois inspirant et original. Réponds en français.'},
-  plan:{s:'Tu es Aura en mode planification pour Adrien. Aide-le à organiser ses journées, formations et projets. Sois structuré et pratique. Réponds en français.'}
+  plan:{s:'Tu es Aura en mode planification pour Adrien. Aide-le à organiser ses journées, formations et projets. Sois structuré et pratique. Réponds en français.'},
+  mediaBuyer:{s:'Tu es Aura en mode Média Buyer pour Adrien. Tu analyses des données publicitaires : CPM, CPC, ROAS, CTR, impressions, budgets, performances de campagnes. Fournis des analyses précises, des insights actionnables et des recommandations d\'optimisation concrètes. Utilise des tableaux et des listes si c\'est plus clair. Réponds en français.'}
 };
-let mode='general',hist=[],loading=false;
+let mode='general',hist=[],loading=false,totalTokens=0;
 
+/* ── Clé API ── */
 function getKey(){return localStorage.getItem('aura_api_key')||'';}
 function saveKey(k){localStorage.setItem('aura_api_key',k.trim());}
 
+/* ── Paramètres ── */
 function openSettings(){
   document.getElementById('sk-err').textContent='';
   document.getElementById('sk-inp').value=getKey();
@@ -200,26 +287,29 @@ function openSettings(){
 function closeSettings(){document.getElementById('sk-modal').style.display='none';}
 function saveSettings(){
   const v=document.getElementById('sk-inp').value.trim();
-  if(v&&!v.startsWith('sk-ant-')){document.getElementById('sk-err').textContent='Format invalide — la clé doit commencer par sk-ant-';return;}
-  saveKey(v);
-  closeSettings();
-  const p=document.getElementById('key-prompt');
-  if(p)p.style.display=v?'none':'block';
+  if(v&&!v.startsWith('sk-ant-')){document.getElementById('sk-err').textContent='Format invalide — doit commencer par sk-ant-';return;}
+  saveKey(v);closeSettings();
+  const p=document.getElementById('key-prompt');if(p)p.style.display=v?'none':'block';
 }
 function toggleKeyVis(){const i=document.getElementById('sk-inp');i.type=i.type==='password'?'text':'password';}
+document.getElementById('sk-modal').addEventListener('click',function(e){if(e.target===this)closeSettings();});
 
+/* ── Modes ── */
 function setMode(m){
   mode=m;
   document.querySelectorAll('.mbtn').forEach(x=>x.classList.toggle('active',x.dataset.mode===m));
   document.querySelectorAll('.mobtn').forEach(x=>x.classList.toggle('active',x.dataset.mode===m));
 }
-function ins(t){const i=document.getElementById('inp');i.value=t;i.focus();rs(i)}
-function rs(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,120)+'px'}
-function hk(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}}
-function gt(){return new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})}
 
+/* ── Saisie ── */
+function ins(t){const i=document.getElementById('inp');i.value=t;i.focus();rs(i);}
+function rs(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,120)+'px';}
+function hk(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}}
+function gt(){return new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});}
+
+/* ── Messages ── */
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function addMsg(role,text){
+function addMsg(role,text,tokens){
   const w=document.getElementById('welcome');if(w)w.remove();
   const c=document.getElementById('msgs');
   const d=document.createElement('div');d.className='msg '+(role==='user'?'user':'ai');
@@ -227,49 +317,96 @@ function addMsg(role,text){
   const bw=document.createElement('div');
   const b=document.createElement('div');b.className='bub';
   b.innerHTML=esc(text).replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
-  const t=document.createElement('div');t.className='mtime';t.style.textAlign=role==='user'?'right':'left';t.textContent=gt();
+  const t=document.createElement('div');t.className='mtime';t.style.textAlign=role==='user'?'right':'left';
+  t.textContent=gt()+(tokens?' · '+tokens+' tokens':'');
   bw.appendChild(b);bw.appendChild(t);d.appendChild(av);d.appendChild(bw);c.appendChild(d);
   c.scrollTop=c.scrollHeight;
 }
-function st(show){const tw=document.getElementById('tw');tw.className='twrap'+(show?' show':'');document.getElementById('msgs').scrollTop=9999}
+function st(show){const tw=document.getElementById('tw');tw.className='twrap'+(show?' show':'');document.getElementById('msgs').scrollTop=9999;}
+function updateTok(){document.getElementById('tok-display').textContent=totalTokens.toLocaleString('fr-FR')+' tokens';}
 
-async function send(){
+/* ── Envoi principal ── */
+async function send(overrideMode,overrideText){
   if(loading)return;
   const inp=document.getElementById('inp');
-  const text=inp.value.trim();if(!text)return;
+  const text=overrideText||inp.value.trim();if(!text)return;
   const key=getKey();
-  if(!key){
-    addMsg('ai','Veuillez configurer votre clé API Anthropic dans les paramètres (⚙ en haut à droite).');
-    return;
-  }
-  loading=true;inp.value='';rs(inp);
+  if(!key){addMsg('ai','Veuillez configurer votre clé API dans les paramètres (⚙).');return;}
+  const activeMode=overrideMode||mode;
+  loading=true;if(!overrideText){inp.value='';rs(inp);}
   addMsg('user',text);hist.push({role:'user',content:text});
   st(true);
   try{
-    const body=JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1024,system:M[mode].s,messages:hist});
+    const body=JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1500,system:M[activeMode].s,messages:hist});
     const hdrs={'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'};
-    let r,data;
-    r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:hdrs,body});
-    data=await r.json();
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:hdrs,body});
+    const data=await r.json();
     if(data.error){
       const msg=data.error.message||'';
-      if(data.error.type==='authentication_error'||msg.toLowerCase().includes('api key')||msg.toLowerCase().includes('api_key'))
-        addMsg('ai','Clé API invalide ou révoquée. Vérifiez votre clé dans les paramètres (⚙).');
-      else
-        addMsg('ai','Erreur API : '+msg);
+      if(data.error.type==='authentication_error'||msg.toLowerCase().includes('api key'))
+        addMsg('ai','Clé API invalide ou révoquée. Vérifiez dans les paramètres (⚙).');
+      else addMsg('ai','Erreur API : '+msg);
       st(false);loading=false;return;
     }
+    const used=(data.usage?.input_tokens||0)+(data.usage?.output_tokens||0);
+    totalTokens+=used;updateTok();
     const reply=data.content?.[0]?.text||'Désolé, une erreur est survenue.';
-    st(false);addMsg('ai',reply);hist.push({role:'assistant',content:reply});
+    st(false);addMsg('ai',reply,used);hist.push({role:'assistant',content:reply});
   }catch(e){
-    st(false);
-    addMsg('ai','Erreur de connexion. Vérifiez votre connexion internet et réessayez.');
+    st(false);addMsg('ai','Erreur de connexion. Vérifiez votre connexion internet.');
   }
   loading=false;
 }
 
-document.getElementById('sk-modal').addEventListener('click',function(e){if(e.target===this)closeSettings();});
+/* ── Média Buyer ── */
+let mbData='';
+function openMB(){
+  document.getElementById('mb-err').textContent='';
+  document.getElementById('mb-data').value='';
+  document.getElementById('mb-q').value='';
+  document.getElementById('mb-fname').textContent='';
+  document.getElementById('mb-preview').style.display='none';
+  document.getElementById('mb-preview').textContent='';
+  mbData='';
+  document.getElementById('mb-modal').style.display='flex';
+}
+function closeMB(){document.getElementById('mb-modal').style.display='none';}
+document.getElementById('mb-modal').addEventListener('click',function(e){if(e.target===this)closeMB();});
 
+function mbDragOver(e){e.preventDefault();document.getElementById('mb-drop').classList.add('drag');}
+function mbDragLeave(){document.getElementById('mb-drop').classList.remove('drag');}
+function mbDrop(e){e.preventDefault();mbDragLeave();const f=e.dataTransfer.files[0];if(f)mbRead(f);}
+function mbFileLoad(e){const f=e.target.files[0];if(f)mbRead(f);}
+function mbRead(f){
+  const ok=['text/csv','text/plain','text/tab-separated-values'];
+  if(!ok.includes(f.type)&&!f.name.match(/\.(csv|txt|tsv)$/i)){
+    document.getElementById('mb-err').textContent='Format non supporté. Utilisez CSV, TXT ou TSV.';return;
+  }
+  const r=new FileReader();
+  r.onload=ev=>{
+    mbData=ev.target.result;
+    document.getElementById('mb-fname').textContent='📎 '+f.name+' ('+Math.round(f.size/1024)+' ko)';
+    const prev=mbData.split('\n').slice(0,8).join('\n');
+    const p=document.getElementById('mb-preview');p.textContent=prev+(mbData.split('\n').length>8?'\n…':'');p.style.display='block';
+    document.getElementById('mb-err').textContent='';
+  };
+  r.readAsText(f);
+}
+function sendMB(){
+  const q=document.getElementById('mb-q').value.trim();
+  const pastedData=document.getElementById('mb-data').value.trim();
+  const data=mbData||pastedData;
+  if(!data&&!q){document.getElementById('mb-err').textContent='Ajoutez des données ou posez une question.';return;}
+  let msg='';
+  if(data)msg+='Voici mes données publicitaires :\n\n'+data+'\n\n';
+  if(q)msg+='Ma question : '+q;
+  else msg+='Analyse ces données et donne-moi les insights clés et recommandations.';
+  closeMB();
+  const inp=document.getElementById('inp');inp.value=msg;rs(inp);
+  send('mediaBuyer',msg);
+}
+
+/* ── Init ── */
 function init(){const p=document.getElementById('key-prompt');if(p)p.style.display=getKey()?'none':'block';}
 init();
 </script>
